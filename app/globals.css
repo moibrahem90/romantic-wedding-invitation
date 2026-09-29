@@ -1,26 +1,128 @@
 @import "tailwindcss";
+@config "../tailwind.config.js";
+
+@theme {
+  --color-cream-50: #FAF7F2;
+  --color-cream-100: #F5F0E8;
+  --color-cream-200: #EBE3D5;
+  --color-cream-300: #DFD2BE;
+  --color-ivory: #F5F0E8;
+  --color-ivory-light: #FAF7F2;
+  --color-ivory-dark: #E8DFC8;
+  --color-gold: #B08D57;
+  --color-gold-light: #C9A873;
+  --color-gold-dark: #8B7355;
+  --color-bronze: #8B7355;
+  --color-bronze-light: #9C8366;
+  --color-bronze-dark: #6F5C44;
+  --color-charcoal: #2A2A2A;
+  --color-charcoal-light: #4A4A4A;
+  --color-charcoal-dark: #1A1A1A;
+
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-montserrat), "Montserrat", "Poppins", sans-serif;
+  --font-cormorant: var(--font-cormorant), "Cormorant Garamond", serif;
+  --font-montserrat: var(--font-montserrat), "Montserrat", sans-serif;
+  --font-amiri: var(--font-amiri), "Amiri", serif;
+  --font-ruqaa: var(--font-ruqaa), "Aref Ruqaa", var(--font-amiri), "Amiri", serif;
+  --font-cairo: var(--font-cairo), "Cairo", "Tajawal", sans-serif;
+
+  --radius-mihrab: 50% 50% 0 0 / 25% 25% 0 0;
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #FAF7F2;
+  --ivory: #F5F0E8;
+  --gold: #B08D57;
+  --gold-light: #C9A873;
+  --gold-dark: #8B7355;
+  --bronze: #8B7355;
+  --charcoal: #2A2A2A;
+  --card-bg: rgba(250, 247, 242, 0.9);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+::selection {
+  background-color: rgba(176, 141, 87, 0.25);
+  color: #2A2A2A;
+}
+
+/* Staggered progressive Hero Entrance Animations */
+@keyframes heroFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes heroFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.hero-enter-1 {
+  animation: heroFadeInUp 2.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+.hero-enter-2 {
+  animation: heroFadeInUp 2.2s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
+}
+
+.hero-enter-3 {
+  animation: heroFadeInUp 2.2s cubic-bezier(0.16, 1, 0.3, 1) 1.5s both;
+}
+
+.hero-enter-4 {
+  animation: heroFadeInUp 2.2s cubic-bezier(0.16, 1, 0.3, 1) 2.1s both;
+}
+
+.hero-enter-5 {
+  animation: heroFadeInUp 2.4s cubic-bezier(0.16, 1, 0.3, 1) 2.7s both;
+}
+
+.hero-frame-fade {
+  animation: heroFadeIn 2.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+
+/* Slow & Romantic Scroll Reveal */
+.reveal-on-scroll {
+  transition:
+    opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+  will-change: opacity, transform;
+}
+
+
+/* Slow Countdown Animation */
+@keyframes countFlip {
+  0% {
+    opacity: 0;
+    transform: translateY(25%) scaleY(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+.count-flip {
+  animation: countFlip 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  display: inline-block;
 }
